@@ -21,7 +21,7 @@ import (
 func main() {
 	// HARDCODE
 	dbConfig := postgres.Config{
-		Host:     "localhost",
+		Host:     "localhost", //postgres if u wanna docker
 		Port:     5432,
 		Username: "username",
 		Password: "password",
