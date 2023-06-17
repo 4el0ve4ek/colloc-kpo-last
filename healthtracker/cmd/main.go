@@ -1,10 +1,16 @@
 package cmd
 
 import (
+	"fmt"
 	"log"
+	"net/http"
+	"os"
+	"os/signal"
+	"syscall"
 
 	"github.com/pkg/errors"
 
+	"awesomeHealth/healthtracker/internal/http/api"
 	"awesomeHealth/healthtracker/internal/repository/activity"
 	"awesomeHealth/healthtracker/internal/repository/nutrition"
 	"awesomeHealth/healthtracker/internal/repository/sleep"
@@ -35,4 +41,20 @@ func main() {
 
 	healthService := service.NewHealthService(activityRepository, nutritionRepository, sleepRepository)
 
+	servant := api.NewServant(healthService)
+	server := servant.GetServer()
+
+	sigChan := make(chan os.Signal, 1)
+	signal.Notify(sigChan, syscall.SIGINT, syscall.SIGQUIT, syscall.SIGTERM)
+
+	fmt.Println("listening on " + server.Addr)
+	go func() {
+		if err := server.ListenAndServe(); err != nil && !errors.Is(err, http.ErrServerClosed) {
+			log.Print(errors.Wrap(err, "http server failure"))
+			sigChan <- syscall.SIGINT
+		}
+	}()
+
+	<-sigChan
+	log.Println(errors.New("shutting down"))
 }

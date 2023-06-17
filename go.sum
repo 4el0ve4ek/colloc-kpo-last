@@ -1,8 +1,4 @@
-github.com/4el0ve4ek/restaraunt-api/library v0.0.0-20230528205944-d542161a6d68 h1:nG1d8+4ddIXiBqDgH+rM8YhpvbXZQgc0tEkKDDsobRM=
-github.com/4el0ve4ek/restaraunt-api/library v0.0.0-20230528205944-d542161a6d68/go.mod h1:hco9dvSGUwXppDet00nF1tPA1jKRTFJel8Ox3XOC3r0=
 github.com/go-chi/chi v1.5.4 h1:QHdzF2szwjqVV4wmByUnTcsbIg7UGaQ0tPF2t5GcAIs=
 github.com/go-chi/chi v1.5.4/go.mod h1:uaf8YgoFazUOkPBG7fxPftUylNumIev9awIWOENIuEg=
-github.com/lib/pq v1.10.9 h1:YXG7RB+JIjhP29X+OtkiDnYaXQwpS4JEWq7dtCCRUEw=
-github.com/lib/pq v1.10.9/go.mod h1:AlVN5x4E4T544tWzH6hKfbfQvm3HdbOxrmggDNAPY9o=
 github.com/pkg/errors v0.9.1 h1:FEBLx1zS214owpjy7qsBeixbURkuhQAwrK5UwLGTwt4=
 github.com/pkg/errors v0.9.1/go.mod h1:bwawxfHBFNV+L2hUp1rHADufV3IMtnDRdf1r5NINEl0=
