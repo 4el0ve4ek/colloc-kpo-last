@@ -60,4 +60,11 @@ curl "localhost:8080/sleep" --data '{"duration": 4}' -v
 curl "localhost:8080/stats" | jq .
 ```
 - Response example:
-- 
+```json
+{
+  "lost_calories": 12,
+  "gained_calories": 6,
+  "activity_time_seconds": 12,
+  "sleep_time_seconds": 8
+}
+```
