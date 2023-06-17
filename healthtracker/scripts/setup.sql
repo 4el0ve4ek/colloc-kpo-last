@@ -1,7 +1,7 @@
 CREATE TABLE "activity"(
     id SERIAL PRIMARY KEY,
     activity VARCHAR(50) NOT NULL,
-    duration TIMESTAMP NOT NULL,
+    duration BIGINT NOT NULL,
     calories INT NOT NULL
 );
 
@@ -16,7 +16,7 @@ CREATE TABLE "nutrition"(
 
 CREATE TABLE "sleep"(
    id SERIAL PRIMARY KEY,
-   duration TIMESTAMP NOT NULL
+   duration BIGINT NOT NULL
 );
 
 

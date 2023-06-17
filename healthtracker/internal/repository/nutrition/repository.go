@@ -22,7 +22,7 @@ func (r *repository) AddNutritionInfo(dish string, size int, calories int) error
 }
 
 func (r *repository) GetSumCalories() (int, error) {
-	row := r.db.QueryRow(`SELECT SUM(calories) FROM nutrition`)
+	row := r.db.QueryRow(`SELECT COALESCE(SUM(calories), 0) FROM nutrition`)
 	if err := row.Err(); err != nil {
 		return 0, errors.Wrap(err, "unable to do query")
 	}

@@ -13,7 +13,7 @@ func NewServant(healthService healthService) *servant {
 
 	router.Method(http.MethodPost, "/activity", newActivityHandler(healthService))
 	router.Method(http.MethodPost, "/nutrition", newNutritionHandler(healthService))
-	router.Method(http.MethodPost, "/activity", newSleepHandler(healthService))
+	router.Method(http.MethodPost, "/sleep", newSleepHandler(healthService))
 	router.Method(http.MethodGet, "/stats", newStatsHandler(healthService))
 
 	server := &http.Server{

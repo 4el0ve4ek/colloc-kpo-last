@@ -1,4 +1,4 @@
-package cmd
+package main
 
 import (
 	"fmt"
@@ -19,10 +19,9 @@ import (
 )
 
 func main() {
-
 	// HARDCODE
 	dbConfig := postgres.Config{
-		Host:     "postgres",
+		Host:     "localhost",
 		Port:     5432,
 		Username: "username",
 		Password: "password",
