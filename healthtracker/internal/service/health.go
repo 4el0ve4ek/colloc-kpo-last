@@ -27,15 +27,30 @@ type healthService struct {
 }
 
 func (s *healthService) AddActivity(activity string, durationInSeconds int, calories int) error {
+	if durationInSeconds < 0 {
+		return errors.New("duration is negative")
+	}
+	if calories < 0 {
+		return errors.New("calories is negative")
+	}
 	duration := time.Second * time.Duration(durationInSeconds)
 	return s.activityRepository.AddActivityInfo(activity, duration, calories)
 }
 
 func (s *healthService) AddNutrition(dish string, size int, calories int) error {
+	if size < 0 {
+		return errors.New("size is negative")
+	}
+	if calories < 0 {
+		return errors.New("calories is negative")
+	}
 	return s.nutritionRepository.AddNutritionInfo(dish, size, calories)
 }
 
 func (s *healthService) AddSleep(durationInSeconds int) error {
+	if durationInSeconds < 0 {
+		return errors.New("duration is negative")
+	}
 	duration := time.Second * time.Duration(durationInSeconds)
 	return s.sleepRepository.AddSleepInfo(duration)
 }
