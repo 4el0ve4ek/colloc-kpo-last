@@ -1,0 +1,27 @@
+version: '4'
+
+services:
+  postgres:
+    image: postgres:latest
+    restart: always
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: "username"
+      POSTGRES_PASSWORD: "password"
+      POSTGRES_DB: "health"
+    volumes:
+      - ./healthtracker/scripts/setup.sql:/docker-entrypoint-initdb.d/init.sql
+      - ./healthtracker/postgres-data:/var/lib/postgresql/data
+
+  health:
+    image: health:latest
+    restart: always
+    build:
+      context: health
+      dockerfile: ./Dockerfile
+    container_name: auth
+    ports:
+      - "8080:8080"
+    depends_on:
+      - postgres
